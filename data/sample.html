@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <title>CVE-2004-2167</title>
+  <meta property="og:title" content="Anonymous Submission">
+  <meta property="og:locale" content="en_US">
+  <meta name="description" content="Anonymous Submission">
+  <meta property="og:description" content="Anonymous Submission">
+  <link rel="canonical" href="https://anonymous2018sub.github.io/">
+  <meta property="og:url" content="https://anonymous2018sub.github.io/">
+  <meta property="og:site_name" content="Anonymous Submission">
+  
+  <link href="pass.css" rel="stylesheet">
+  <style type="text/css">
+    body {
+      padding-top: 20px;
+      padding-bottom: 40px;
+    }
+
+    .container-narrow {
+      margin: 0 auto;
+      max-width: 750px;
+    }
+
+    .container-narrow>hr {
+      margin: 30px 0;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="container-narrow">
+    <div class="masthead">
+      <h3>
+        <center>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-2167" target="_blank">CVE-2004-2167</a>
+        </center>
+      </h3>
+    </div>
+
+    <div class="page-header">
+    </div>
+
+
+    <h4>Vulnerability Description</h4>
+    <p>Multiple buffer overflows in LaTeX2rtf 1.9.15, and possibly other versions, allow remote attackers to execute arbitrary
+      code via (1) the expandmacro function, and possibly (2) Environments and (3) TranslateCommand.</p>
+    <br/>
+
+
+    <h4>Experiment Environment</h4>
+    <p>Debian 8/9</p>
+    <p>
+      We provide <a href="https://github.com/anonymous2018sub/anonymous2018sub.github.io/raw/master/CVE-2004-2167/Dockerfile">DockerFile</a> 
+      and corresponding <a href="https://hub.docker.com/r/anonymous2018/cve-2004-2167/">docker image</a>
+      for useful information in the vulnerability reproduction.
+    </p>
+    <br/>
+
+
+    <h4>Install &amp; Configuration</h4>
+    <div class="highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight">
+<code>tar -xvf latex2rtf-1.9.15.tar.gz;
+cd latex2rtf-1.9.15/;
+make;
+make install; **&lt;= essential**</code>
+</pre>
+      </div>
+    </div>
+    <br/>
+
+
+    <h4 id="problems-in-installation--configuration">Problems in Installation &amp; Configuration</h4>
+    <div class="highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight">
+<code>(Not set):1 Cannot open the latex2rtf config file 'direct.cfg'
+(Not set):1 Locate the directory containing the .cfg files and
+(Not set):1 (1) define the environment variable RTFPATH, *or*
+(Not set):1 (2) use command line path option "-P /path/to/cfg/file", *or*
+(Not set):1 (3) recompile latex2rtf with CFGDIR defined properly
+(Not set):1 Current RTFPATH: (null)
+(Not set):1 Current CFGDIR: /usr/local/share/latex2rtf/cfg
+(Not set):1 Error! Giving up. Please don't hate me.</code>
+</pre>
+      </div>
+    </div>
+
+    <p>If you see the above error information, you may miss
+      <code class="highlighter-rouge">make install</code> command after you have compiled this package.
+    </p>
+    <br/>
+
+
+    <h4 id="pocs">PoCs</h4>
+
+    <p>
+      1. <a href="https://www.exploit-db.com/exploits/24622/">LaTeX2rtf 1.9.15 - Remote Buffer Overflow (ExploitDB)</a>
+    </p>
+    <p>
+      <strong>Note:</strong> There is a small syntax error when compiling the PoC File. It misses an open brace in the first line of main function. Please refer to PoC #3, which is the correct version.
+    </p>
+
+
+    <p>
+      2. <a href="http://www.securityfocus.com/bid/11233/">LaTeX2rtf Remote Buffer Overflow Vulnerability (SecurityFocus)</a>
+    </p>
+    <p>
+      <strong>Note:</strong>
+      There is a small syntax error when compiling the PoC File. 
+      It misses an open brace in the first line of main function.
+      Please refer to PoC #3, which is the correct version.
+    </p>
+
+    <p>
+      3. <a href="https://www.securitytracker.com/id/1011367">LaTeX2rtf Buffer Overflow Lets Remote Users Execute Arbitrary Code (SecurityTracker)</a>
+    </p>
+    <br/>
+
+
+    <h4 id="how-to-trigger-vulnerability">How to Trigger Vulnerability</h4>
+    <div class="highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight">
+<code>% copy PoC File into the workspace
+$ gcc -o exploit latex2rtf.c
+$ ./exploit &gt; poc.tex
+$ ./latex2rtf poc.tex
+Segmentation fault</code>
+</pre>
+      </div>
+    </div>
+    <!-- <br/> -->
+
+    <div class="page-header"></div>
+    <h3 id="vulnerability-details">Vulnerability Details</h3>
+    <h4 id="root-cause">Root Cause</h4>
+
+    <div class="highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight">
+<code>definitions.c:155
+strcpy(expanded,macro_piece);</code>
+</pre>
+      </div>
+    </div>
+    <br/>
+
+    <h4 id="stack-trace">Stack Trace</h4>
+    <div class="highlighter-rouge">
+      <div class="highlight">
+        <pre class="highlight">
+<code>(gdb) info stack
+##0  __strlen_sse2_bsf () at ../sysdeps/i386/i686/multiarch/strlen-sse2-bsf.S:52
+##1  0x08063a93 in expandmacro (macro=0x90909090 &lt;Address 0x90909090 out of bounds&gt;, 
+    opt_param=0x90909090 &lt;Address 0x90909090 out of bounds&gt;, params=-1869574000) at definitions.c:156
+##2  0x90909090 in ?? ()
+##3  0x90909090 in ?? ()
+##4  0x90909090 in ?? ()
+......</code>
+</pre>
+      </div>
+    </div>
+    <br/>
+
+
+    <h4 id="references">References</h4>
+    <ul>
+      <li>
+        <p>
+          <a href="https://www.exploit-db.com/exploits/24622/">EDB-24622</a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2004-2167">CVE-2004-2167</a>
+        </p>
+        <ul>
+          <li>
+            <a href="http://www.securityfocus.com/bid/11233/">BID-11233</a>
+            <ul>
+              <li>
+                <a href="http://latex2rtf.sourceforge.net/">LaTeX2rtf Home Page</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="https://www.securitytracker.com/id/1011367">SecurityTracker Alert ID: 1011367</a>
+          </li>
+          <li>
+            <a href="https://exchange.xforce.ibmcloud.com/vulnerabilities/17460">Exchange Xforce 17460</a>
+          </li>
+          <li>
+            <a href="https://exchange.xforce.ibmcloud.com/vulnerabilities/17487">Exchange Xforce 17487</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</body>
+
+</html>
