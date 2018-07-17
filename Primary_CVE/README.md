@@ -291,5 +291,3 @@ CVE ID|Program Name|Version|Year|Vulnerability Type
 [2017-9205](https://github.com/VulnReproduction/LinuxFlaw/tree/master/CVE-2017-9205)|imageworsener|1.3.1|2017|Invalid Access
 [2017-9206](https://github.com/VulnReproduction/LinuxFlaw/tree/master/CVE-2017-9206)|imageworsener|1.3.1|2017|Heap Overflow
 [2017-9207](https://github.com/VulnReproduction/LinuxFlaw/tree/master/CVE-2017-9207)|imageworsener|1.3.1|2017|Heap Overflow
-
-
