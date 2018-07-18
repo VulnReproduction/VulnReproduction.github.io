@@ -39,6 +39,5 @@ booktitle = {27th {USENIX} Security Symposium ({USENIX} Security 18)},
 year = {2018},
 address = {Baltimore, MD},
 url = {https://www.usenix.org/conference/usenixsecurity18/presentation/mu},
-publisher = {{USENIX} Association},
 }
 ```
