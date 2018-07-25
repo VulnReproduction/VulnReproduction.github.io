@@ -1,1 +1,7 @@
+# Site settings
+title: Vulnerability Reproduction DataSet
+description: This list is created and maintained by Penn State University
+show_downloads: false
+url: "https://vulnreproduction.github.io/" # the base hostname & protocol for your site
+
 theme: jekyll-theme-hacker

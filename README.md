@@ -26,10 +26,13 @@ If CVE information is not already uploaded to [LinuxFlaw](https://github.com/Vul
 
 [Yueqi Chen](https://github.com/chenyueqi)
 
-## Additional Note
+[Xinyu Xing](https://github.com/xingxinyu) - **Faculty in Penn State University**
+
+## Usenix Paper
+
+[Understanding the Reproducibility of Crowd-reported Security Vulnerabilities]()
 
 If you think our dataset is of help to your work, please cite our following paper. We really appreciate it!
-
 
 ```
 @inproceedings {217567,
