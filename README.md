@@ -14,23 +14,9 @@ If CVE information is not already uploaded to [LinuxFlaw](https://github.com/Vul
 
 [Vmware Image](VMware_Image/README.md)
 
-## Contributor
+## Our Usenix Paper
 
-[Dongliang Mu](https://github.com/mudongliang)
-
-[Jun Xu](https://github.com/junxzm1990)
-
-[Alejandro Cuevas](https://github.com/aledcuevas)
-
-[Limin Yang](https://github.com/linus-young)
-
-[Yueqi Chen](https://github.com/chenyueqi)
-
-[Xinyu Xing](https://github.com/xingxinyu) - **Faculty in Penn State University**
-
-## Usenix Paper
-
-[Understanding the Reproducibility of Crowd-reported Security Vulnerabilities]()
+[Understanding the Reproducibility of Crowd-reported Security Vulnerabilities](https://github.com/VulnReproduction/VulnReproduction.github.io/raw/master/Paper/usenix.pdf)
 
 If you think our dataset is of help to your work, please cite our following paper. We really appreciate it!
 
@@ -44,3 +30,17 @@ address = {Baltimore, MD},
 url = {https://www.usenix.org/conference/usenixsecurity18/presentation/mu},
 }
 ```
+
+## Contributor
+
+[Dongliang Mu](https://github.com/mudongliang)
+
+[Jun Xu](https://github.com/junxzm1990)
+
+[Alejandro Cuevas](https://github.com/aledcuevas)
+
+[Limin Yang](https://github.com/linus-young)
+
+[Yueqi Chen](https://github.com/chenyueqi)
+
+[Xinyu Xing](https://github.com/xingxinyu) (**Assistant Professor in Penn State University**)
