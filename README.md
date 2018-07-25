@@ -33,7 +33,7 @@ url = {https://www.usenix.org/conference/usenixsecurity18/presentation/mu},
 
 ## Contributor
 
-[Dongliang Mu](https://github.com/mudongliang)
+[Dongliang Mu](https://github.com/mudongliang) <- Contact Me with <dzm77@ist.psu.edu>
 
 [Jun Xu](https://github.com/junxzm1990)
 
