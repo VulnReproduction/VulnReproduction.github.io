@@ -31,6 +31,12 @@ url = {https://www.usenix.org/conference/usenixsecurity18/presentation/mu},
 }
 ```
 
+## Related Publications
+
+[CREDAL: Towards Locating a Memory Corruption Vulnerability with Your Core Dump](https://dl.acm.org/citation.cfm?id=2978340)
+
+[Postmortem Program Analysis with Hardware-Enhanced Post-Crash Artifacts](https://www.usenix.org/conference/usenixsecurity17/technical-sessions/presentation/xu-jun)
+
 ## Contributor
 
 [Dongliang Mu](https://github.com/mudongliang) (**Contact Me With** <dzm77@ist.psu.edu>)
